@@ -26,9 +26,8 @@ import java.util.concurrent.TimeUnit;
 import static android.graphics.PorterDuff.Mode.MULTIPLY;
 
 public class MainActivity extends AppCompatActivity {
-    public boolean isClicked = false;
     public Integer score = 0;
-    String url = "https://opentdb.com/api.php?amount=1&type=multiple";
+    String url = "https://opentdb.com/api.php?amount=1&category=18&difficulty=easy&type=multiple";
     ProgressDialog dialog;
     @Override
 
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Add a x-sec timer
         CountDownTimer waitTimer;
-        waitTimer = new CountDownTimer(10000, 1000) {
+        waitTimer = new CountDownTimer(16666, 1000) {
             TextView timer = findViewById(R.id.Timer);
             public void onTick(long millisUntilFinished) {
                 timer.setText("" + millisUntilFinished / 1000);
@@ -70,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
                 Button answer2 = findViewById(R.id.answerB);
                 Button answer3 = findViewById(R.id.answerC);
                 Button answer4 = findViewById(R.id.answerD);
+                answer1.setEnabled(true);
+                answer2.setEnabled(true);
+                answer3.setEnabled(true);
+                answer4.setEnabled(true);
                 if (answer1.getText().equals(castore.getText())) {
                     answer1.setBackgroundColor(Color.parseColor("#00FF00"));
                 }
@@ -112,7 +115,10 @@ public class MainActivity extends AppCompatActivity {
 
             answer1.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View V) {
-                    isClicked = true;
+                    answer1.setEnabled(false);
+                    answer2.setEnabled(false);
+                    answer3.setEnabled(false);
+                    answer4.setEnabled(false);
                     if (answer1.getText().equals(castore.getText())) {
                         answer1.setBackgroundColor(Color.parseColor("#00FF00"));
                         score += 10;
@@ -133,7 +139,10 @@ public class MainActivity extends AppCompatActivity {
 
             answer2.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View V) {
-                    isClicked = true;
+                    answer1.setEnabled(false);
+                    answer2.setEnabled(false);
+                    answer3.setEnabled(false);
+                    answer4.setEnabled(false);
                     if (answer2.getText().equals(castore.getText())) {
                         answer2.setBackgroundColor(Color.parseColor("#00FF00"));
                         score += 10;
@@ -154,7 +163,10 @@ public class MainActivity extends AppCompatActivity {
 
             answer3.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View V) {
-                    isClicked = true;
+                    answer1.setEnabled(false);
+                    answer2.setEnabled(false);
+                    answer3.setEnabled(false);
+                    answer4.setEnabled(false);
                     if (answer3.getText().equals(castore.getText())) {
                         answer3.setBackgroundColor(Color.parseColor("#00FF00"));
                         score += 10;
@@ -175,7 +187,10 @@ public class MainActivity extends AppCompatActivity {
 
             answer4.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View V) {
-                    isClicked = true;
+                    answer1.setEnabled(false);
+                    answer2.setEnabled(false);
+                    answer3.setEnabled(false);
+                    answer4.setEnabled(false);
                     if (answer4.getText().equals(castore.getText())) {
                         answer4.setBackgroundColor(Color.parseColor("#00FF00"));
                         score += 10;
